@@ -1,0 +1,172 @@
+\documentclass[a4paper, 2pt]{report}
+
+\usepackage[a4paper, total={6in, 9in}]{geometry}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{indentfirst}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+
+\renewcommand{\chaptername}{Parte}
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabela}
+
+\begin{document}
+    
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{3cm}
+ 
+        \LARGE
+        \textbf{Instituto Superior Técnico}
+        \vskip 0.4cm
+ 
+        \Large{MEEC}
+        \vskip 0.2cm
+
+        \Large{Instrumentação e Medidas}
+        \vskip 3cm
+        
+
+ 
+        \Huge{\textbf{1º Trabalho de Laboratório}}
+        \vskip 0.5cm
+
+        \huge{\textbf{Amplificador Operacional}}
+        \vskip 0.5cm
+
+ 
+        \vfill
+ 
+        \large
+        \textbf{Grupo Nº 44}\\
+        \vspace{0.3cm}
+        Alexandre Rodrigues, 90002\\
+        Henrique Lourenço, \\
+        Rodrigo Aires, \\
+        \vspace{1cm}
+
+        \textbf{Turno:} 4ªf 17h30
+
+    \end{center}
+\end{titlepage}
+
+\chapter{Amplificador Operacional em Montagem Inversora}
+
+\par Texto sobre a figura \ref{figura_exemplo}.
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width = 4in]{}
+    \caption{Legenda da figura}
+    \label{figura_exemplo}
+\end{figure}
+
+\chapter{Amplificador Operacional em Montagem Integradora}
+
+
+
+\chapter{Amplificador Operacional em Montagem Diferença}
+
+\par Realiza-se uma montagem diferença com os parâmetros descritos no enunciado. O ampop é alimentado com \(\pm 15V\), como sugerido no \textit{datasheet} do dispositivo (OP07D).
+
+\par De modo a estimar o ganho comum da montagem, calcula-se o ponto de funcionamento em repouso do circuito. Coloca-se uma tensão de \(13V\) comum aos dois terminais de entrada (condições idênticas às descritas no \textit{datasheet} do dispositivo para testar esta grandeza) e observa-se a tensão de saída. O ganho comum é dado por (\ref{3_1}):
+
+\begin{equation}
+    G_C = 20 \log_{10}(\frac{u_S}{13}) = -46.545773\text{dB}
+    \label{3_1}
+\end{equation}
+
+\par De seguida, é realizada uma análise da resposta em frequência do circuito. É colocada uma fonte AC de \(250\text{mV}\) de amplitude na entrada \(u_A\), e uma fonte idêntica em oposição de fase em \(u_B\). Sabendo que o ganho diferencial é dado por (\ref{3_2}):
+
+\begin{equation}
+    G_D = \frac{u_S}{u_B - u_A}
+    \label{3_2}
+\end{equation}
+
+\par Obtém-se o seguinte diagrama de bode \ref{3_bode}:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5in]{3_freq_bode.png}
+    \caption{Ganho diferencial em função da frequência da montagem diferença}
+    \label{3_bode}
+\end{figure}
+
+\par O CMRR do circuito vem da relação entre o ganho diferencial e o ganho comum, obtendo-se então (\ref{3_3}):
+
+\begin{equation}
+    \textit{CMRR} = G_D[\text{dB}] - G_C[\text{dB}] = 26.602118 + 46.545773 = 73.147891 \text{dB}
+    \label{3_3}
+\end{equation}
+
+\par De modo a exemplificar a análise anterior, simula-se a reposta temporal do circuito nas condições idênticas à análise em frequência, escolhendo-se um sinal de \(1 \text{kHz}\) para o efeito. A resposta do circuito está representada na figura \ref{3_wave}:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 5in]{3_waveform.png}
+    \caption{Resposta temporal da montagem diferença a um sinal diferencial sinusoidal}
+    \label{3_wave}
+\end{figure}
+
+
+
+\chapter{Amplificador de Instrumentação}
+
+
+\par Realiza-se a montagem referida no enunciado, com uma resistência de ganho \(R_G = 180\Omega\). O amplificador de instrumentação é alimentado com \(\pm 15V\), a tensão de alimentação máxima referida no \textit{datasheet} do dispositivo (LT1168).
+
+\par De modo a estimar o ganho comum da montagem, calcula-se o ponto de funcionamento em repouso do circuito. Coloca-se uma tensão de \(10V\) comum aos dois terminais de entrada (condições descritas no \textit{datasheet} do dispositivo para testar o CMRR) e observa-se a tensão de saída. O ganho comum é dado por (\ref{4_1}):
+
+\begin{equation}
+    G_C = 20 \log_{10}(\frac{u_S}{10}) = -186.75523\text{dB}
+    \label{4_1}
+\end{equation}
+
+\par De seguida, é realizada uma análise da resposta em frequência do circuito. É colocada uma fonte AC de \(20\text{mV}\) de amplitude na entrada \(u_A\), e uma fonte idêntica em oposição de fase em \(u_B\). Sabendo que o ganho diferencial é dado por (\ref{4_2}):
+
+\begin{equation}
+    G_D = \frac{u_S}{u_B - u_A}
+    \label{4_2}
+\end{equation}
+
+\par Obtém-se o seguinte diagrama de bode \ref{4_bode}:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5in]{4_freq_bode.png}
+    \caption{Ganho diferencial em função da frequência do amplificador de instrumentação}
+    \label{4_bode}
+\end{figure}
+
+\par O CMRR do circuito vem da relação entre o ganho diferencial e o ganho comum, obtendo-se então (\ref{4_3}):
+
+\begin{equation}
+    \textit{CMRR} = G_D[\text{dB}] - G_C[\text{dB}] = 48.798155 + 186.75523 = 235.553385 \text{dB}
+    \label{4_3}
+\end{equation}
+
+\par De modo a exemplificar a análise anterior, simula-se a reposta temporal do circuito nas condições idênticas à análise em frequência, escolhendo-se um sinal de \(1 \text{kHz}\) para o efeito. A resposta do circuito está representada na figura \ref{3_wave}:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 5in]{4_waveform.png}
+    \caption{Resposta temporal da monta a um sinal diferencial sinusoidal}
+    \label{3_wave}
+\end{figure}
+
+
+
+\chapter{Comparador}
+\chapter{Medição e Amplificação de Tensões}
+
+\huge{\textbf{Referências}} \newline
+\newline
+\normalsize
+\href{https://www.ti.com/lit/ds/symlink/op07d.pdf}{OP07D} \newline
+\href{https://www.analog.com/media/en/technical-documentation/data-sheets/1168fa.pdf}{LT1168} \newline
+
+\end{document}
